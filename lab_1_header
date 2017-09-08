@@ -1,8 +1,26 @@
 //header file
 
+#include <iostream>
+#include <iomanip>
+#include <cassert>
+#include <cstring>
+#include "Text.h"
 
 
+class text
+{
+  public:
+  
+  
+  
+  
+  
+  
+  
+  private:
 
+
+};
 
 
 
