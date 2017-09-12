@@ -1,41 +1,137 @@
+
+
+
+
 //header file
 
 #include <iostream>
 #include <iomanip>
 #include <cassert>
 #include <cstring>
-#include "Text.h"
+#include <string>
 
+using namespace std;
 
-class text
+class Text
 {
-  public:
-  Text ::Text ( const char *charSeq );
-  Text:: Text ( const Text &valueText );
-  void Text:: operator = ( const Text& other );
-  Text:: ~Text ();
-  
-  int Text:: getLength () const;
-  char Text:: operator [] ( int n ) const;
-  void Text:: clear ();
-  void Text:: showStructure () const;
-  
-  istream & operator >> ( istream &input, Text &inputText );
-  ostream & operator << ( ostream &output, const Text &outputText );
-  
-  Text Text:: toUpper ( ) const;
-  Text Text:: toLower ( ) const;
-  
-  
-  bool Text::operator == ( const Text &other ) const;
-  bool Text::operator < ( const Text &other ) const;
-  bool Text::operator > ( const Text &other ) const;
-  
-  private:
+public:
+	Text::Text(const char *charSeq); //done
+	Text::Text(const Text &valueText); //done
+	
+
+	int Text::getLength() const; //done
+	string Text:: operator [] (int n) const; //done, must return a string of size 1
+	void Text::clear(); //done
+	void Text::showStructure() const; //done
+
+	//istream & operator >> (istream &input, Text &inputText);
+	//ostream & operator << (ostream &output, const Text &outputText);
+
+	Text Text::toUpper() const; //for lab 2
+	Text Text::toLower() const; // for lab 2
+
+
+	
+	Text:: ~Text(); //done
+
+	void Text:: operator = (const Text& other);
+	bool Text::operator == (const Text &other) const;
+	bool Text::operator < (const Text &other) const;
+	bool Text::operator > (const Text &other) const;
+
+
+
+
+
+private:
+	
+	string words_string;
+	char *words_pointer;
+	int words_length = 0;
+
+
+
 
 
 };
 
+
+
+Text::Text(const char *charSeq)   //takes an address with a value and creates the class
+{
+	
+	char words_pointer = *charSeq;
+	string words_string = &charSeq;
+	int words_length = words_string.length();
+	
+}
+
+Text::Text(const Text &valueText) //takes a word and assigns the pointer and word length
+{
+	string words_string = &valueText;
+	char *words_pointer = *words_string;
+	int words_length = words_string.length();
+
+
+
+}
+
+
+int Text::getLength() const //returns the length of a string as a integer
+{
+	return words_length;
+
+
+
+}
+
+
+string Text:: operator [] (int n) const
+{
+	
+	string temp = words_string.substr(n, 1);
+	
+	return temp;
+
+}
+
+
+
+void Text::clear()
+{
+
+
+	string temp;
+	words_string = temp;
+
+	words_length = 0;
+
+}
+
+
+void Text::showStructure() const
+
+{
+
+	int index = 0;
+	while (words_length != index)
+	{
+		cout << " " << words_string.substr(index,1);
+
+
+		index = index + 1;
+	}
+
+
+
+
+}
+
+Text:: ~Text()
+{
+
+
+}
 
 
 
