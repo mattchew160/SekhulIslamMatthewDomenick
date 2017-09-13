@@ -135,4 +135,48 @@ Text:: ~Text()
 
 
 
+void Text:: operator = (const Text& other)
+{
+	int words_length = other.words_length;
+	string words_string = other.words_string;
+	char *words_pointer = other.words_pointer;
 
+
+
+
+
+}
+
+bool Text::operator == (const Text &other) const
+{
+	int temp_length = other.words_length;
+	string temp_string = other.words_string;
+	char *temp_pointer = other.words_pointer;
+
+	if ((temp_length == other.words_length) && (temp_string == other.words_string) && (temp_pointer == other.words_pointer))
+		return true;
+	else
+		return false;
+
+
+
+
+
+}
+
+bool Text::operator < (const Text &other) const
+{
+	int temp_length = other.words_length;
+	string temp_string = other.words_string;
+	char *temp_pointer = other.words_pointer;
+
+	if ( (temp_string < other.words_string))) //come back right here
+		return true;
+	else
+		return false;
+
+
+
+
+
+}
