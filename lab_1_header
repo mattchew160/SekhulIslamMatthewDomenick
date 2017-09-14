@@ -1,7 +1,4 @@
 
-
-
-
 //header file
 
 #include <iostream>
@@ -9,20 +6,22 @@
 #include <cassert>
 #include <cstring>
 #include <string>
+#include <fstream>
+#include "text_file.txt"
 
 using namespace std;
 
 class Text
 {
 public:
-	Text::Text(const char *charSeq); //done
-	Text::Text(const Text &valueText); //done
-	
+	Text::Text(const char *charSeq); //done		takes an address with a value and creates the class
+	Text::Text(const Text &valueText); //done	takes a word and assigns the pointer and word length
 
-	int Text::getLength() const; //done
-	string Text:: operator [] (int n) const; //done, must return a string of size 1
-	void Text::clear(); //done
-	void Text::showStructure() const; //done
+
+	int Text::getLength() const; //done		returns the length of a string as a integer
+	string Text:: operator [] (int n) const; //done, returns a string of size 1 , and only one
+	void Text::clear(); //done	 clears all the private variables of an object
+	void Text::showStructure() const; //done	used for debugging and prints out the inputed string
 
 	//istream & operator >> (istream &input, Text &inputText);
 	//ostream & operator << (ostream &output, const Text &outputText);
@@ -31,10 +30,10 @@ public:
 	Text Text::toLower() const; // for lab 2
 
 
-	
-	Text:: ~Text(); //done
 
-	void Text:: operator = (const Text& other);
+	Text:: ~Text(); //done		deletes an object from memory
+
+	void Text:: operator = (const Text& other); //
 	bool Text::operator == (const Text &other) const;
 	bool Text::operator < (const Text &other) const;
 	bool Text::operator > (const Text &other) const;
@@ -44,13 +43,13 @@ public:
 
 
 private:
+
 	
-	string words_string;
 	char *words_pointer;
 	int words_length = 0;
 
 
-
+	string words_string;
 
 
 };
@@ -59,11 +58,11 @@ private:
 
 Text::Text(const char *charSeq)   //takes an address with a value and creates the class
 {
-	
+
 	char words_pointer = *charSeq;
 	string words_string = &charSeq;
 	int words_length = words_string.length();
-	
+
 }
 
 Text::Text(const Text &valueText) //takes a word and assigns the pointer and word length
@@ -86,18 +85,18 @@ int Text::getLength() const //returns the length of a string as a integer
 }
 
 
-string Text:: operator [] (int n) const
+string Text:: operator [] (int n) const // returns a string of size 1 , and only one
 {
-	
+
 	string temp = words_string.substr(n, 1);
-	
+
 	return temp;
 
 }
 
 
 
-void Text::clear()
+void Text::clear() //clears all the private variables of an object
 {
 
 
@@ -109,14 +108,14 @@ void Text::clear()
 }
 
 
-void Text::showStructure() const
+void Text::showStructure() const // used for debugging and prints out the inputed string
 
 {
 
 	int index = 0;
 	while (words_length != index)
 	{
-		cout << " " << words_string.substr(index,1);
+		cout << " " << words_string.substr(index, 1);
 
 
 		index = index + 1;
@@ -127,7 +126,7 @@ void Text::showStructure() const
 
 }
 
-Text:: ~Text()
+Text:: ~Text() //deletes an object from memory
 {
 
 
@@ -170,7 +169,7 @@ bool Text::operator < (const Text &other) const
 	string temp_string = other.words_string;
 	char *temp_pointer = other.words_pointer;
 
-	if ( (temp_string < other.words_string))) //come back right here
+	if ((temp_string < other.words_string)) //come back right here  9/11/17
 		return true;
 	else
 		return false;
@@ -180,3 +179,71 @@ bool Text::operator < (const Text &other) const
 
 
 }
+
+
+
+
+
+istream & operator >> (istream &input, Text &inputText) // <----------------------------------9/14/17 come back here
+
+// (In-lab 1)  Text input function. Extracts a string from istream input and
+// returns it in inputText. Returns the state of the input stream.
+
+{
+	const int textBufferSize = 256;     // Large (but finite)
+	char textBuffer[textBufferSize];   // text buffer
+
+	string temp;
+	string temp2[256];
+
+	for (int i = 0; i < textBufferSize ; i++)
+	{
+		input >> temp;
+
+
+		temp2[i] = temp;
+
+	}
+
+	for (int i = 0; i < textBufferSize; i++)
+	{
+
+
+
+	}
+
+
+
+
+	// Read a string into textBuffer, setw is used to prevent buffer
+	// overflow.
+
+
+
+	// Apply the Text(char*) constructor to convert textBuffer to
+	// a string. Assign the resulting string to inputText using the
+	// assignment operator.
+
+
+
+	// Return the state of the input stream.
+
+	return input;
+}
+
+//--------------------------------------------------------------------
+
+ostream & operator << (ostream &output, const Text &outputText)
+
+// (In-lab 1)  Text output function. Inserts outputText in ostream output.
+// Returns the state of the output stream.
+
+{
+
+	
+
+}
+
+
+//--------------------------------------------------------------------
+
